@@ -105,8 +105,9 @@ local function make_gif_internal(burn_subs)
     -- single-pass palette pipeline
 	-- use floyd_steinberg for low file size
     local filtergraph = string.format(
-        "%s,fps=15,scale=-1:480:flags=lanczos,split[a][b];[a]palettegen=stats_mode=full[p];[b][p]paletteuse=dither=floyd_steinberg",
-        vf
+        "%s,fps=%s,scale=-1:480:flags=lanczos,split[a][b];[a]palettegen=stats_mode=full[p];[b][p]paletteuse=dither=floyd_steinberg",
+        vf,
+		fps
     )
 
     local args = string.format(
