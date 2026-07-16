@@ -149,14 +149,14 @@ local function make_gif_internal(burn_subs)
         string.format("%s,split[a][b];[a]palettegen=stats_mode=diff[p];[b][p]paletteuse=dither=floyd_steinberg", vf)
 
     local args =
-        string.format(
-        'ffmpeg -v warning -i "%s" -ss %s -t %s -an -filter_complex "%s" -y "%s"',
-        esc(input),
-        start_time,
-        duration,
-        esc(filtergraph),
-        esc(output)
-    )
+		string.format(
+		'ffmpeg -v warning -ss %s -t %s -i "%s" -an -filter_complex "%s" -y "%s"',
+		start_time,
+		duration,
+		esc(input),
+		esc(filtergraph),
+		esc(output)
+	)
 
     msg.info(args)
     mp.osd_message("Creating GIF...")
